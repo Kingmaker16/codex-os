@@ -1,0 +1,16 @@
+{
+  "sessionId": "test-001",
+  "goal": "Create a simple REST API health check endpoint using Fastify",
+  "mode": "plan",
+  "context": {
+    "repoSummary": "A Node.js project using Fastify framework for building REST APIs. TypeScript-based with ESM modules.",
+    "notes": "This is a test of the roundtable system using mock providers"
+  },
+  "participants": {
+    "planner": { "provider": "mock", "model": "mock" },
+    "researcher": { "provider": "mock", "model": "mock" },
+    "coder": { "provider": "mock", "model": "mock" },
+    "critic": { "provider": "mock", "model": "mock" },
+    "judge": { "provider": "mock", "model": "mock" }
+  }
+}

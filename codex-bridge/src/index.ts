@@ -4,11 +4,15 @@ dotenv.config();
 import Fastify from "fastify";
 import { loadProviders } from "./providerLoader.js";
 import type { ModelRequest } from "./providers/types.js";
+import { registerV2Routes } from "./v2/router.js";
 
 const app = Fastify();
 
 async function start() {
   const providers = await loadProviders();
+  
+  // Register v2 roundtable endpoints
+  registerV2Routes(app, providers);
 
   app.get("/health", async () => ({
     ok: true,
