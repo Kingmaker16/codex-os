@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "kind": { "const": "TurnAppended" },
+        "version": { "const": 1 },
+        "turnId": { "type": "string" },
+        "sessionId": { "type": "string" },
+        "role": { "enum": ["user", "assistant"] },
+        "text": { "type": "string" },
+        "audioRef": { "type": "string" },
+        "ts": { "type": "string", "format": "date-time" }
+      },
+      "required": ["kind","version","turnId","sessionId","role","text","ts"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "kind": { "const": "SummaryUpdated" },
+        "version": { "const": 1 },
+        "sessionId": { "type": "string" },
+        "summary": { "type": "string" },
+        "rulesDelta": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ts": { "type": "string", "format": "date-time" }
+      },
+      "required": ["kind","version","sessionId","summary","rulesDelta","ts"]
+    }
+  ]
+}

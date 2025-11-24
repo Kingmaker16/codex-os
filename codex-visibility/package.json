@@ -1,0 +1,20 @@
+{
+  "name": "codex-visibility",
+  "version": "1.0.0",
+  "description": "Codex Visibility Engine v1 — Shadowban detection, reach diagnostics, visibility scoring, virality prediction.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.28.0",
+    "node-fetch": "^3.3.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "typescript": "^5.4.2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "codex-monetization",
+  "version": "1.0.0",
+  "description": "Codex Monetization Engine v1 - Revenue tracking and profit forecasting",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node --esm src/index.ts"
+  },
+  "keywords": ["codex", "monetization", "revenue", "forecasting", "analytics"],
+  "author": "Amar",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}

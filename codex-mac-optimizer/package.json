@@ -1,0 +1,18 @@
+{
+  "name": "codex-mac-optimizer",
+  "version": "1.0.0",
+  "description": "Codex macOS optimization engine",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.4.0"
+  },
+  "type": "module"
+}

@@ -1,0 +1,26 @@
+{
+  "name": "codex-voice",
+  "version": "0.1.0",
+  "description": "Codex Voice OS v1.1 - Hybrid voice support with OpenAI Realtime + ElevenLabs",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node --esm src/index.ts"
+  },
+  "keywords": ["codex", "voice", "tts", "stt"],
+  "author": "Amar",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "ws": "^8.15.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}

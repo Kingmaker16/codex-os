@@ -1,0 +1,22 @@
+{
+  "name": "codex-hands-v5",
+  "version": "5.0.0",
+  "description": "Codex Hands v5.0 Ultra — Advanced execution engine with Creative, Social, Store automation",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/uuid": "^9.0.7",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "codex-telemetry",
+  "version": "1.0.0",
+  "description": "Codex Telemetry Engine v1 - System monitoring and predictive analytics",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node --esm src/index.ts"
+  },
+  "keywords": ["codex", "telemetry", "metrics", "monitoring", "analytics"],
+  "author": "Amar",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}

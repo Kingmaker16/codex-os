@@ -1,0 +1,1446 @@
+=======================================
+  CODEX FULL SYSTEM SIMULATION TEST v1 
+=======================================
+
+STEP 0: CORE HEALTH CHECKS
+---------------------------
+Orchestrator:
+{
+  "ok": false,
+  "error": "sessionId and graphId query params required"
+}
+
+Mesh:
+{
+  "ok": true,
+  "service": "codex-mesh",
+  "version": "1.0.0",
+  "mode": "SEMI_AUTONOMOUS_MESH"
+}
+
+Self-Regulation (SRL):
+{
+  "ok": true,
+  "service": "codex-srl",
+  "version": "1.0.0",
+  "mode": "SEMI_AUTONOMOUS"
+}
+
+Hardening:
+{
+  "ok": true,
+  "service": "codex-hardening",
+  "version": "1.0.0",
+  "mode": "ULTRA_HARDENED"
+}
+
+STEP 1: STRATEGY SIMULATION
+---------------------------
+{
+  "ok": true,
+  "graphId": "graph_1763874854735_09qaiuvzo",
+  "graph": {
+    "id": "graph_1763874854735_09qaiuvzo",
+    "tasks": [
+      {
+        "id": "t1",
+        "type": "social_trends",
+        "status": "failed",
+        "dependsOn": [],
+        "payload": {
+          "platform": [
+            "TikTok",
+            "YouTube Shorts"
+          ],
+          "niche": "home fitness",
+          "timeframe": "last 30 days"
+        },
+        "error": "Service call failed: fetch failed"
+      },
+      {
+        "id": "t2",
+        "type": "research",
+        "status": "pending",
+        "dependsOn": [
+          "t1"
+        ],
+        "payload": {
+          "topic": "Home fitness content trends",
+          "platform": [
+            "TikTok",
+            "YouTube Shorts"
+          ]
+        }
+      },
+      {
+        "id": "t3",
+        "type": "social_plan",
+        "status": "pending",
+        "dependsOn": [
+          "t1",
+          "t2"
+        ],
+        "payload": {
+          "brand": "Smart Bottle Pro",
+          "platform": [
+            "TikTok",
+            "YouTube Shorts"
+          ],
+          "duration": "7 days",
+          "content_types": [
+            "product demos",
+            "fitness tips",
+            "user testimonials"
+          ]
+        }
+      },
+      {
+        "id": "t4",
+        "type": "generate_caption",
+        "status": "pending",
+        "dependsOn": [
+          "t3"
+        ],
+        "payload": {
+          "platform": "TikTok",
+          "tone": "energetic",
+          "topics": [
+            "hydration",
+            "fitness",
+            "product benefits"
+          ]
+        }
+      },
+      {
+        "id": "t5",
+        "type": "create_video",
+        "status": "pending",
+        "dependsOn": [
+          "t3",
+          "t4"
+        ],
+        "payload": {
+          "platform": [
+            "TikTok",
+            "YouTube Shorts"
+          ],
+          "style": "fast-paced fitness content",
+          "topics": [
+            "Smart Bottle Pro features",
+            "workout hydration tips"
+          ]
+        }
+      }
+    ],
+    "createdAt": "2025-11-23T05:14:14.735Z",
+    "updatedAt": "2025-11-23T05:14:14.737Z"
+  },
+  "command": "Plan a 7-day TikTok + YouTube Shorts strategy for Smart Bottle Pro in the home fitness niche."
+}
+
+STEP 2: MESH PLAN (DRY_RUN)
+---------------------------
+{
+  "ok": true,
+  "plan": {
+    "id": "d3790f85-886b-4adb-9949-2509a511a787",
+    "sessionId": "sim-smartbottle-mesh-1",
+    "domain": "social",
+    "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+    "mode": "DRY_RUN",
+    "createdAt": "2025-11-23T05:14:14.752Z",
+    "updatedAt": "2025-11-23T05:14:14.752Z",
+    "steps": [
+      {
+        "id": "cfeef526-4506-4ca4-92c2-f077dcd2315b",
+        "label": "Evaluate autonomy decision",
+        "service": "autonomy",
+        "endpoint": "/autonomy/evaluate",
+        "payload": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "domain": "social"
+        },
+        "status": "PENDING"
+      },
+      {
+        "id": "65a37236-f612-47f0-8eb7-00b50ae4494b",
+        "label": "Run self-regulation (SRL)",
+        "service": "srl",
+        "endpoint": "/srl/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "contentSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "plannedActions": [
+            "planned_step_1",
+            "planned_step_2"
+          ]
+        },
+        "status": "PENDING"
+      },
+      {
+        "id": "01584941-b308-4a19-940c-9365c6ab38bc",
+        "label": "Run hardening check",
+        "service": "hardening",
+        "endpoint": "/hardening/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "actionSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "servicesInvolved": [
+            "orchestrator",
+            "ops",
+            "social",
+            "distribution"
+          ]
+        },
+        "status": "PENDING"
+      },
+      {
+        "id": "c83b588a-196f-423e-b329-a187b7f596ae",
+        "label": "Create workflow",
+        "service": "workflow",
+        "endpoint": "/workflow/create",
+        "payload": {
+          "projectId": "social-project",
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "sessionId": "sim-smartbottle-mesh-1"
+        },
+        "status": "PENDING"
+      }
+    ]
+  }
+}
+Mesh plan ID: d3790f85-886b-4adb-9949-2509a511a787
+
+STEP 3: EXECUTE MESH STEPS (DRY_RUN)
+-------------------------------------
+Executing mesh step 1...
+{
+  "ok": true,
+  "plan": {
+    "id": "d3790f85-886b-4adb-9949-2509a511a787",
+    "sessionId": "sim-smartbottle-mesh-1",
+    "domain": "social",
+    "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+    "mode": "DRY_RUN",
+    "createdAt": "2025-11-23T05:14:14.752Z",
+    "updatedAt": "2025-11-23T05:14:14.778Z",
+    "steps": [
+      {
+        "id": "cfeef526-4506-4ca4-92c2-f077dcd2315b",
+        "label": "Evaluate autonomy decision",
+        "service": "autonomy",
+        "endpoint": "/autonomy/evaluate",
+        "payload": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "domain": "social"
+        },
+        "status": "DONE",
+        "result": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "action": "allow_with_caution",
+          "confidence": 63.75,
+          "reasoning": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+          "reasoningTrace": [
+            {
+              "step": 1,
+              "phase": "Understanding",
+              "thought": "Analyzing goal: \"Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.\"",
+              "confidence": 95,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 2,
+              "phase": "Safety Check",
+              "thought": "Safety assessment: Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints.. Risk score: 0/100",
+              "confidence": 90,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 3,
+              "phase": "Multi-Factor Analysis",
+              "thought": "Context relevance: 50%, Urgency: 50%, Domain importance: 85%, Feasibility: 70%",
+              "confidence": 85,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 4,
+              "phase": "Final Decision",
+              "thought": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+              "confidence": 63.75,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            }
+          ],
+          "safetyGuard": {
+            "safe": true,
+            "riskScore": 0,
+            "guardrailsTriggered": [],
+            "prohibitedActions": [],
+            "recommendation": "allow",
+            "reasoning": "Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints."
+          },
+          "suggestedNextSteps": [
+            "Request additional context if needed",
+            "Execute with step-by-step validation",
+            "Be prepared to pause for user input"
+          ],
+          "estimatedDuration": "1-2 minutes"
+        }
+      },
+      {
+        "id": "65a37236-f612-47f0-8eb7-00b50ae4494b",
+        "label": "Run self-regulation (SRL)",
+        "service": "srl",
+        "endpoint": "/srl/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "contentSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "plannedActions": [
+            "planned_step_1",
+            "planned_step_2"
+          ]
+        },
+        "status": "PENDING"
+      },
+      {
+        "id": "01584941-b308-4a19-940c-9365c6ab38bc",
+        "label": "Run hardening check",
+        "service": "hardening",
+        "endpoint": "/hardening/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "actionSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "servicesInvolved": [
+            "orchestrator",
+            "ops",
+            "social",
+            "distribution"
+          ]
+        },
+        "status": "PENDING"
+      },
+      {
+        "id": "c83b588a-196f-423e-b329-a187b7f596ae",
+        "label": "Create workflow",
+        "service": "workflow",
+        "endpoint": "/workflow/create",
+        "payload": {
+          "projectId": "social-project",
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "sessionId": "sim-smartbottle-mesh-1"
+        },
+        "status": "PENDING"
+      }
+    ]
+  }
+}
+
+Executing mesh step 2...
+{
+  "ok": true,
+  "plan": {
+    "id": "d3790f85-886b-4adb-9949-2509a511a787",
+    "sessionId": "sim-smartbottle-mesh-1",
+    "domain": "social",
+    "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+    "mode": "DRY_RUN",
+    "createdAt": "2025-11-23T05:14:14.752Z",
+    "updatedAt": "2025-11-23T05:14:14.807Z",
+    "steps": [
+      {
+        "id": "cfeef526-4506-4ca4-92c2-f077dcd2315b",
+        "label": "Evaluate autonomy decision",
+        "service": "autonomy",
+        "endpoint": "/autonomy/evaluate",
+        "payload": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "domain": "social"
+        },
+        "status": "DONE",
+        "result": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "action": "allow_with_caution",
+          "confidence": 63.75,
+          "reasoning": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+          "reasoningTrace": [
+            {
+              "step": 1,
+              "phase": "Understanding",
+              "thought": "Analyzing goal: \"Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.\"",
+              "confidence": 95,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 2,
+              "phase": "Safety Check",
+              "thought": "Safety assessment: Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints.. Risk score: 0/100",
+              "confidence": 90,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 3,
+              "phase": "Multi-Factor Analysis",
+              "thought": "Context relevance: 50%, Urgency: 50%, Domain importance: 85%, Feasibility: 70%",
+              "confidence": 85,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 4,
+              "phase": "Final Decision",
+              "thought": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+              "confidence": 63.75,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            }
+          ],
+          "safetyGuard": {
+            "safe": true,
+            "riskScore": 0,
+            "guardrailsTriggered": [],
+            "prohibitedActions": [],
+            "recommendation": "allow",
+            "reasoning": "Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints."
+          },
+          "suggestedNextSteps": [
+            "Request additional context if needed",
+            "Execute with step-by-step validation",
+            "Be prepared to pause for user input"
+          ],
+          "estimatedDuration": "1-2 minutes"
+        }
+      },
+      {
+        "id": "65a37236-f612-47f0-8eb7-00b50ae4494b",
+        "label": "Run self-regulation (SRL)",
+        "service": "srl",
+        "endpoint": "/srl/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "contentSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "plannedActions": [
+            "planned_step_1",
+            "planned_step_2"
+          ]
+        },
+        "status": "DONE",
+        "result": {
+          "ok": true,
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "allowExecution": true,
+          "requireApproval": false,
+          "findings": [],
+          "summary": "No issues detected.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "id": "01584941-b308-4a19-940c-9365c6ab38bc",
+        "label": "Run hardening check",
+        "service": "hardening",
+        "endpoint": "/hardening/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "actionSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "servicesInvolved": [
+            "orchestrator",
+            "ops",
+            "social",
+            "distribution"
+          ]
+        },
+        "status": "PENDING"
+      },
+      {
+        "id": "c83b588a-196f-423e-b329-a187b7f596ae",
+        "label": "Create workflow",
+        "service": "workflow",
+        "endpoint": "/workflow/create",
+        "payload": {
+          "projectId": "social-project",
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "sessionId": "sim-smartbottle-mesh-1"
+        },
+        "status": "PENDING"
+      }
+    ]
+  }
+}
+
+Executing mesh step 3...
+{
+  "ok": true,
+  "plan": {
+    "id": "d3790f85-886b-4adb-9949-2509a511a787",
+    "sessionId": "sim-smartbottle-mesh-1",
+    "domain": "social",
+    "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+    "mode": "DRY_RUN",
+    "createdAt": "2025-11-23T05:14:14.752Z",
+    "updatedAt": "2025-11-23T05:14:14.834Z",
+    "steps": [
+      {
+        "id": "cfeef526-4506-4ca4-92c2-f077dcd2315b",
+        "label": "Evaluate autonomy decision",
+        "service": "autonomy",
+        "endpoint": "/autonomy/evaluate",
+        "payload": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "domain": "social"
+        },
+        "status": "DONE",
+        "result": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "action": "allow_with_caution",
+          "confidence": 63.75,
+          "reasoning": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+          "reasoningTrace": [
+            {
+              "step": 1,
+              "phase": "Understanding",
+              "thought": "Analyzing goal: \"Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.\"",
+              "confidence": 95,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 2,
+              "phase": "Safety Check",
+              "thought": "Safety assessment: Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints.. Risk score: 0/100",
+              "confidence": 90,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 3,
+              "phase": "Multi-Factor Analysis",
+              "thought": "Context relevance: 50%, Urgency: 50%, Domain importance: 85%, Feasibility: 70%",
+              "confidence": 85,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 4,
+              "phase": "Final Decision",
+              "thought": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+              "confidence": 63.75,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            }
+          ],
+          "safetyGuard": {
+            "safe": true,
+            "riskScore": 0,
+            "guardrailsTriggered": [],
+            "prohibitedActions": [],
+            "recommendation": "allow",
+            "reasoning": "Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints."
+          },
+          "suggestedNextSteps": [
+            "Request additional context if needed",
+            "Execute with step-by-step validation",
+            "Be prepared to pause for user input"
+          ],
+          "estimatedDuration": "1-2 minutes"
+        }
+      },
+      {
+        "id": "65a37236-f612-47f0-8eb7-00b50ae4494b",
+        "label": "Run self-regulation (SRL)",
+        "service": "srl",
+        "endpoint": "/srl/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "contentSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "plannedActions": [
+            "planned_step_1",
+            "planned_step_2"
+          ]
+        },
+        "status": "DONE",
+        "result": {
+          "ok": true,
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "allowExecution": true,
+          "requireApproval": false,
+          "findings": [],
+          "summary": "No issues detected.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "id": "01584941-b308-4a19-940c-9365c6ab38bc",
+        "label": "Run hardening check",
+        "service": "hardening",
+        "endpoint": "/hardening/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "actionSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "servicesInvolved": [
+            "orchestrator",
+            "ops",
+            "social",
+            "distribution"
+          ]
+        },
+        "status": "DONE",
+        "result": {
+          "ok": true,
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "allowExecution": false,
+          "requireApproval": true,
+          "issues": [
+            {
+              "type": "SERVICE_DOWN",
+              "level": "CRITICAL",
+              "message": "Service orchestrator is not healthy."
+            },
+            {
+              "type": "SERVICE_DOWN",
+              "level": "CRITICAL",
+              "message": "Service telemetry is not healthy."
+            },
+            {
+              "type": "SERVICE_DOWN",
+              "level": "CRITICAL",
+              "message": "Service stability is not healthy."
+            }
+          ],
+          "summary": "[CRITICAL] SERVICE_DOWN: Service orchestrator is not healthy. | [CRITICAL] SERVICE_DOWN: Service telemetry is not healthy. | [CRITICAL] SERVICE_DOWN: Service stability is not healthy.",
+          "confidence": 0.3
+        }
+      },
+      {
+        "id": "c83b588a-196f-423e-b329-a187b7f596ae",
+        "label": "Create workflow",
+        "service": "workflow",
+        "endpoint": "/workflow/create",
+        "payload": {
+          "projectId": "social-project",
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "sessionId": "sim-smartbottle-mesh-1"
+        },
+        "status": "PENDING"
+      }
+    ]
+  }
+}
+
+Executing mesh step 4...
+{
+  "ok": true,
+  "plan": {
+    "id": "d3790f85-886b-4adb-9949-2509a511a787",
+    "sessionId": "sim-smartbottle-mesh-1",
+    "domain": "social",
+    "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+    "mode": "DRY_RUN",
+    "createdAt": "2025-11-23T05:14:14.752Z",
+    "updatedAt": "2025-11-23T05:14:14.850Z",
+    "steps": [
+      {
+        "id": "cfeef526-4506-4ca4-92c2-f077dcd2315b",
+        "label": "Evaluate autonomy decision",
+        "service": "autonomy",
+        "endpoint": "/autonomy/evaluate",
+        "payload": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "domain": "social"
+        },
+        "status": "DONE",
+        "result": {
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "action": "allow_with_caution",
+          "confidence": 63.75,
+          "reasoning": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+          "reasoningTrace": [
+            {
+              "step": 1,
+              "phase": "Understanding",
+              "thought": "Analyzing goal: \"Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.\"",
+              "confidence": 95,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 2,
+              "phase": "Safety Check",
+              "thought": "Safety assessment: Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints.. Risk score: 0/100",
+              "confidence": 90,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 3,
+              "phase": "Multi-Factor Analysis",
+              "thought": "Context relevance: 50%, Urgency: 50%, Domain importance: 85%, Feasibility: 70%",
+              "confidence": 85,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            },
+            {
+              "step": 4,
+              "phase": "Final Decision",
+              "thought": "Moderate confidence (64%). Proceed with enhanced monitoring.",
+              "confidence": 63.75,
+              "timestamp": "2025-11-23T05:14:14.774Z"
+            }
+          ],
+          "safetyGuard": {
+            "safe": true,
+            "riskScore": 0,
+            "guardrailsTriggered": [],
+            "prohibitedActions": [],
+            "recommendation": "allow",
+            "reasoning": "Low risk (0/100). Safe for autonomous execution within semi-autonomous constraints."
+          },
+          "suggestedNextSteps": [
+            "Request additional context if needed",
+            "Execute with step-by-step validation",
+            "Be prepared to pause for user input"
+          ],
+          "estimatedDuration": "1-2 minutes"
+        }
+      },
+      {
+        "id": "65a37236-f612-47f0-8eb7-00b50ae4494b",
+        "label": "Run self-regulation (SRL)",
+        "service": "srl",
+        "endpoint": "/srl/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "contentSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "plannedActions": [
+            "planned_step_1",
+            "planned_step_2"
+          ]
+        },
+        "status": "DONE",
+        "result": {
+          "ok": true,
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "allowExecution": true,
+          "requireApproval": false,
+          "findings": [],
+          "summary": "No issues detected.",
+          "confidence": 0.9
+        }
+      },
+      {
+        "id": "01584941-b308-4a19-940c-9365c6ab38bc",
+        "label": "Run hardening check",
+        "service": "hardening",
+        "endpoint": "/hardening/check",
+        "payload": {
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "actionSummary": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "servicesInvolved": [
+            "orchestrator",
+            "ops",
+            "social",
+            "distribution"
+          ]
+        },
+        "status": "DONE",
+        "result": {
+          "ok": true,
+          "sessionId": "sim-smartbottle-mesh-1",
+          "domain": "social",
+          "allowExecution": false,
+          "requireApproval": true,
+          "issues": [
+            {
+              "type": "SERVICE_DOWN",
+              "level": "CRITICAL",
+              "message": "Service orchestrator is not healthy."
+            },
+            {
+              "type": "SERVICE_DOWN",
+              "level": "CRITICAL",
+              "message": "Service telemetry is not healthy."
+            },
+            {
+              "type": "SERVICE_DOWN",
+              "level": "CRITICAL",
+              "message": "Service stability is not healthy."
+            }
+          ],
+          "summary": "[CRITICAL] SERVICE_DOWN: Service orchestrator is not healthy. | [CRITICAL] SERVICE_DOWN: Service telemetry is not healthy. | [CRITICAL] SERVICE_DOWN: Service stability is not healthy.",
+          "confidence": 0.3
+        }
+      },
+      {
+        "id": "c83b588a-196f-423e-b329-a187b7f596ae",
+        "label": "Create workflow",
+        "service": "workflow",
+        "endpoint": "/workflow/create",
+        "payload": {
+          "projectId": "social-project",
+          "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+          "sessionId": "sim-smartbottle-mesh-1"
+        },
+        "status": "DONE",
+        "result": {
+          "ok": true,
+          "workflow": {
+            "id": "97d8b258-5de8-468e-8b88-7032e92a35cb",
+            "projectId": "social-project",
+            "goal": "Plan, validate, and dry-run workflows for 7 days of Smart Bottle Pro content.",
+            "createdAt": "2025-11-23T05:14:14.844Z",
+            "updatedAt": "2025-11-23T05:14:14.844Z",
+            "status": "PLANNED",
+            "steps": [
+              {
+                "id": "7d073e95-4beb-40af-b88a-f035ad146b08",
+                "label": "step",
+                "service": "unknown",
+                "endpoint": "/",
+                "payload": {},
+                "mode": "LIVE",
+                "requiresApproval": false,
+                "status": "PENDING"
+              },
+              {
+                "id": "158312b7-a078-441b-8ecc-25e37fa8f6aa",
+                "label": "step",
+                "service": "unknown",
+                "endpoint": "/",
+                "payload": {},
+                "mode": "LIVE",
+                "requiresApproval": false,
+                "status": "PENDING"
+              },
+              {
+                "id": "d741afad-bb4a-4e89-96f8-a2898871cbc6",
+                "label": "step",
+                "service": "unknown",
+                "endpoint": "/",
+                "payload": {},
+                "mode": "LIVE",
+                "requiresApproval": true,
+                "status": "PENDING"
+              },
+              {
+                "id": "ff72c431-8a2a-4a40-af1e-f5a989b0eeb2",
+                "label": "step",
+                "service": "unknown",
+                "endpoint": "/",
+                "payload": {},
+                "mode": "LIVE",
+                "requiresApproval": false,
+                "status": "PENDING"
+              }
+            ],
+            "reasoningTrace": [
+              "Steps derived from Autonomy Engine decomposition."
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+
+STEP 4: WORKFLOW SIMULATION
+---------------------------
+{
+  "ok": true,
+  "workflow": {
+    "id": "485e85f4-87bc-4bed-837f-ff9430f2d1db",
+    "projectId": "smart-bottle-pro",
+    "goal": "Plan, create, and schedule 7 days of Smart Bottle Pro content for TikTok + Shorts.",
+    "createdAt": "2025-11-23T05:14:14.859Z",
+    "updatedAt": "2025-11-23T05:14:14.859Z",
+    "status": "PLANNED",
+    "steps": [
+      {
+        "id": "86a7595e-410b-4278-8aa0-0ec0e171b69a",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      },
+      {
+        "id": "5601b447-4c1c-4c4c-a435-1896a178d054",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      },
+      {
+        "id": "a31fa99d-34ee-4638-8a2e-0cabdf866f4e",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": true,
+        "status": "PENDING"
+      },
+      {
+        "id": "21a9a01e-7cb3-41e6-9484-4bae079ac251",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      }
+    ],
+    "reasoningTrace": [
+      "Steps derived from Autonomy Engine decomposition."
+    ]
+  }
+}
+Workflow ID: 485e85f4-87bc-4bed-837f-ff9430f2d1db
+
+Starting workflow...
+{
+  "ok": true,
+  "workflow": {
+    "id": "485e85f4-87bc-4bed-837f-ff9430f2d1db",
+    "projectId": "smart-bottle-pro",
+    "goal": "Plan, create, and schedule 7 days of Smart Bottle Pro content for TikTok + Shorts.",
+    "createdAt": "2025-11-23T05:14:14.859Z",
+    "updatedAt": "2025-11-23T05:14:14.875Z",
+    "status": "RUNNING",
+    "steps": [
+      {
+        "id": "86a7595e-410b-4278-8aa0-0ec0e171b69a",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      },
+      {
+        "id": "5601b447-4c1c-4c4c-a435-1896a178d054",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      },
+      {
+        "id": "a31fa99d-34ee-4638-8a2e-0cabdf866f4e",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": true,
+        "status": "PENDING"
+      },
+      {
+        "id": "21a9a01e-7cb3-41e6-9484-4bae079ac251",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      }
+    ],
+    "reasoningTrace": [
+      "Steps derived from Autonomy Engine decomposition."
+    ]
+  }
+}
+
+Continuing workflow (3 steps)...
+{
+  "ok": true,
+  "workflow": {
+    "id": "485e85f4-87bc-4bed-837f-ff9430f2d1db",
+    "projectId": "smart-bottle-pro",
+    "goal": "Plan, create, and schedule 7 days of Smart Bottle Pro content for TikTok + Shorts.",
+    "createdAt": "2025-11-23T05:14:14.859Z",
+    "updatedAt": "2025-11-23T05:14:14.886Z",
+    "status": "FAILED",
+    "steps": [
+      {
+        "id": "86a7595e-410b-4278-8aa0-0ec0e171b69a",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "ERROR",
+        "error": "Not Found"
+      },
+      {
+        "id": "5601b447-4c1c-4c4c-a435-1896a178d054",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      },
+      {
+        "id": "a31fa99d-34ee-4638-8a2e-0cabdf866f4e",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": true,
+        "status": "PENDING"
+      },
+      {
+        "id": "21a9a01e-7cb3-41e6-9484-4bae079ac251",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      }
+    ],
+    "reasoningTrace": [
+      "Steps derived from Autonomy Engine decomposition."
+    ]
+  }
+}
+
+{
+  "ok": true,
+  "workflow": {
+    "id": "485e85f4-87bc-4bed-837f-ff9430f2d1db",
+    "projectId": "smart-bottle-pro",
+    "goal": "Plan, create, and schedule 7 days of Smart Bottle Pro content for TikTok + Shorts.",
+    "createdAt": "2025-11-23T05:14:14.859Z",
+    "updatedAt": "2025-11-23T05:14:14.886Z",
+    "status": "FAILED",
+    "steps": [
+      {
+        "id": "86a7595e-410b-4278-8aa0-0ec0e171b69a",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "ERROR",
+        "error": "Not Found"
+      },
+      {
+        "id": "5601b447-4c1c-4c4c-a435-1896a178d054",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      },
+      {
+        "id": "a31fa99d-34ee-4638-8a2e-0cabdf866f4e",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": true,
+        "status": "PENDING"
+      },
+      {
+        "id": "21a9a01e-7cb3-41e6-9484-4bae079ac251",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      }
+    ],
+    "reasoningTrace": [
+      "Steps derived from Autonomy Engine decomposition."
+    ]
+  }
+}
+
+{
+  "ok": true,
+  "workflow": {
+    "id": "485e85f4-87bc-4bed-837f-ff9430f2d1db",
+    "projectId": "smart-bottle-pro",
+    "goal": "Plan, create, and schedule 7 days of Smart Bottle Pro content for TikTok + Shorts.",
+    "createdAt": "2025-11-23T05:14:14.859Z",
+    "updatedAt": "2025-11-23T05:14:14.886Z",
+    "status": "FAILED",
+    "steps": [
+      {
+        "id": "86a7595e-410b-4278-8aa0-0ec0e171b69a",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "ERROR",
+        "error": "Not Found"
+      },
+      {
+        "id": "5601b447-4c1c-4c4c-a435-1896a178d054",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      },
+      {
+        "id": "a31fa99d-34ee-4638-8a2e-0cabdf866f4e",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": true,
+        "status": "PENDING"
+      },
+      {
+        "id": "21a9a01e-7cb3-41e6-9484-4bae079ac251",
+        "label": "step",
+        "service": "unknown",
+        "endpoint": "/",
+        "payload": {},
+        "mode": "LIVE",
+        "requiresApproval": false,
+        "status": "PENDING"
+      }
+    ],
+    "reasoningTrace": [
+      "Steps derived from Autonomy Engine decomposition."
+    ]
+  }
+}
+
+STEP 5: ROUTING + DISTRIBUTION SIMULATION
+------------------------------------------
+Routing decision:
+{
+  "message": "Route POST:/routing/decide not found",
+  "error": "Not Found",
+  "statusCode": 404
+}
+
+Distribution calendar:
+{
+  "message": "Route POST:/distribution/planCalendar not found",
+  "error": "Not Found",
+  "statusCode": 404
+}
+
+STEP 6: PERFORMANCE + OPTIMIZATION
+-----------------------------------
+Performance refinement (social):
+{
+  "ok": true,
+  "report": {
+    "sessionId": "sim-smartbottle-perf-1",
+    "domain": "social",
+    "timestamp": "2025-11-23T05:14:14.925Z",
+    "weaknessCount": 5,
+    "patternCount": 1,
+    "recommendationCount": 5,
+    "improvementScore": -16.093244990303813,
+    "health": {
+      "score": 2.8135100193923748,
+      "grade": "F",
+      "status": "CRITICAL"
+    },
+    "weaknesses": [
+      {
+        "metric": "views",
+        "type": "UNDERPERFORMANCE",
+        "severity": "HIGH",
+        "currentValue": 12000,
+        "benchmark": 50000,
+        "delta": -38000,
+        "description": "views is 76.0% below benchmark of 50000"
+      },
+      {
+        "metric": "ctr",
+        "type": "DECLINE",
+        "severity": "LOW",
+        "currentValue": 0.27,
+        "benchmark": 0.31,
+        "delta": -0.03999999999999998,
+        "description": "ctr declined by 12.9% from recent average"
+      },
+      {
+        "metric": "ctr",
+        "type": "UNDERPERFORMANCE",
+        "severity": "MEDIUM",
+        "currentValue": 0.27,
+        "benchmark": 0.5,
+        "delta": -0.22999999999999998,
+        "description": "ctr is 46.0% below benchmark of 0.5"
+      },
+      {
+        "metric": "engagement",
+        "type": "DECLINE",
+        "severity": "LOW",
+        "currentValue": 350,
+        "benchmark": 430,
+        "delta": -80,
+        "description": "engagement declined by 18.6% from recent average"
+      },
+      {
+        "metric": "engagement",
+        "type": "UNDERPERFORMANCE",
+        "severity": "HIGH",
+        "currentValue": 350,
+        "benchmark": 1000,
+        "delta": -650,
+        "description": "engagement is 65.0% below benchmark of 1000"
+      }
+    ],
+    "patterns": [
+      {
+        "id": "f1b9084b-53ff-4671-b8ac-f42dd7e2957b",
+        "name": "Low CTR-to-Views Conversion",
+        "description": "Click-through rate not converting to sustained viewership",
+        "confidence": 0.78,
+        "correlation": "conversion ratio: 0.44",
+        "dataPoints": 100
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "347a52ed-d408-4b46-b570-e17361e6f1f5",
+        "priority": "LOW",
+        "category": "Content Optimization",
+        "action": "Improve thumbnail and title optimization",
+        "rationale": "CTR is ctr declined by 12.9% from recent average. Strong thumbnails and titles drive initial clicks.",
+        "expectedImpact": "+0.2-0.5% CTR increase",
+        "requiresApproval": false,
+        "estimatedEffort": "MEDIUM"
+      },
+      {
+        "id": "55f5ece2-c7c8-44b6-b42e-2b608b806edb",
+        "priority": "MEDIUM",
+        "category": "Content Optimization",
+        "action": "Improve thumbnail and title optimization",
+        "rationale": "CTR is ctr is 46.0% below benchmark of 0.5. Strong thumbnails and titles drive initial clicks.",
+        "expectedImpact": "+0.2-0.5% CTR increase",
+        "requiresApproval": false,
+        "estimatedEffort": "MEDIUM"
+      },
+      {
+        "id": "157e3c78-1bbc-41c8-93bf-82c453464597",
+        "priority": "LOW",
+        "category": "Engagement Strategy",
+        "action": "Enhance call-to-action and interactive elements",
+        "rationale": "engagement declined by 18.6% from recent average",
+        "expectedImpact": "+15-25% engagement boost",
+        "requiresApproval": false,
+        "estimatedEffort": "LOW"
+      },
+      {
+        "id": "b14fd4bd-2a7f-4cba-ac21-3664feb865d0",
+        "priority": "HIGH",
+        "category": "Engagement Strategy",
+        "action": "Enhance call-to-action and interactive elements",
+        "rationale": "engagement is 65.0% below benchmark of 1000",
+        "expectedImpact": "+15-25% engagement boost",
+        "requiresApproval": true,
+        "estimatedEffort": "LOW"
+      },
+      {
+        "id": "33b9270c-a57a-45d4-abb5-27ae8a6bb11f",
+        "priority": "MEDIUM",
+        "category": "AI-Generated Strategy",
+        "action": "Review LLM consensus recommendations",
+        "rationale": "To address the identified weaknesses in views, click-through rate (CTR), and engagement within Codex OS's social domain, here are three actionable recommendations, along with their expected impacts an",
+        "expectedImpact": "Varies - see full consensus",
+        "requiresApproval": true,
+        "estimatedEffort": "MEDIUM",
+        "llmSource": "Multi-model consensus"
+      }
+    ],
+    "llmConsensus": "To address the identified weaknesses in views, click-through rate (CTR), and engagement within Codex OS's social domain, here are three actionable recommendations, along with their expected impacts and implementation priorities:\n\n### 1. Optimize Content Quality and Relevance\n\n**Action:** Conduct an in-depth content audit to identify and prioritize high-performing content. Focus on improving the quality and relevance of low-performing content based on audience insights and preferences. Integrate SEO strategies and leverage trending topics to enhance visibility and engagement.\n\n**Expected Impact:** \n- Increase in views and user engagement as the content becomes more aligned with audience interests.\n- Improvement in CTR as the content becomes more appealing and discoverable, thus attracting quality traffic.\n\n**Implementation Priority: High**\n\n### 2. Enhance UI/UX Design and Navigation\n\n**Action:** Re-evaluate and redesign the user interface and navigation flow to ensure a seamless and intuitive user experience. Conduct A/B testing on different design elements and layouts to measure the impact on CTR and engagement. Focus on clear, eye-catching call-to-action buttons, fast-loading pages, and a mobile-responsive design.\n\n**Expected Impact:**\n- Enhanced CTR owing to improved accessibility and user-friendliness, making it easier for users to interact with content.\n- Increased engagement as users spend more time exploring content due to a better user experience.\n\n**Implementation Priority: High**\n\n### 3. Targeted Promotion and Personalized Recommendations\n\n**Action:** Implement advanced targeting algorithms for personalized content recommendations and promotions based on user preferences and behavior. Utilize retargeting strategies for users who have previously interacted with content but did not convert. Apply machine learning to refine targeting precision over time.\n\n**Expected Impact:**\n- Boosted views and CTR as personalized content draws user attention and encourages exploration.\n- Higher engagement as targeted recommendations resonate more effectively with user interests, increasing likelihood of repeat interactions.\n\n**Implementation Priority: Medium**\n\n### Conclusion\n\nBy prioritizing these actions, Codex OS can significantly enhance its social domain performance. Focusing on content quality and relevance builds a strong foundation for attracting and maintaining user interest, while improving UI/UX design directly influences conversion metrics. Targeted promotion enhances the effectiveness of content delivery, fostering deeper user engagement. Immediate attention and resources should be directed towards optimizing content and user experience, followed by refining targeting strategies for sustained impact and growth."
+  }
+}
+
+Multi-domain optimization:
+{
+  "ok": true,
+  "sessionId": "sim-smartbottle-opt-1",
+  "timestamp": "2025-11-23T05:15:03.199Z",
+  "kpis": [],
+  "insights": [],
+  "corrections": [],
+  "serviceHealth": [
+    {
+      "service": "codex-bridge",
+      "port": 4000,
+      "healthy": true,
+      "responseTime": 4
+    },
+    {
+      "service": "codex-brain",
+      "port": 4100,
+      "healthy": true,
+      "responseTime": 4
+    },
+    {
+      "service": "codex-orchestrator",
+      "port": 4200,
+      "healthy": true,
+      "responseTime": 4
+    },
+    {
+      "service": "codex-strategy",
+      "port": 4300,
+      "healthy": false
+    },
+    {
+      "service": "codex-accounts",
+      "port": 5020,
+      "healthy": false
+    },
+    {
+      "service": "codex-visibility",
+      "port": 5030,
+      "healthy": false
+    },
+    {
+      "service": "codex-engagement",
+      "port": 5040,
+      "healthy": false
+    },
+    {
+      "service": "codex-campaign",
+      "port": 5050,
+      "healthy": true,
+      "responseTime": 2
+    },
+    {
+      "service": "codex-creative-suite",
+      "port": 5230,
+      "healthy": false
+    },
+    {
+      "service": "codex-distribution-v2",
+      "port": 5301,
+      "healthy": true,
+      "responseTime": 3
+    },
+    {
+      "service": "codex-routing-v2",
+      "port": 5560,
+      "healthy": true,
+      "responseTime": 3
+    },
+    {
+      "service": "codex-vault",
+      "port": 5175,
+      "healthy": true,
+      "responseTime": 4
+    },
+    {
+      "service": "codex-autonomy",
+      "port": 5420,
+      "healthy": true,
+      "responseTime": 4
+    }
+  ],
+  "llmConsensus": "As an expert Codex OS optimizer, undefined domain performance typically indicates a lack of clear workload definition, resource allocation policies, and monitoring visibility, leading to unpredictable behavior and inefficient resource utilization.\n\nHere are the top optimization opportunities:\n\n1.  **Workload Fingerprinting & Domain Definition:**\n    *   **Impact:** HIGH\n    *   **Recommendations:** Implement deep kernel tracing and application-level instrumentation to profile execution patterns, resource consumption (CPU, memory, I/O, network), and system calls within the \"undefined\" zones. Leverage machine learning to cluster similar behaviors into distinct, actionable domain types (e.g., latency-sensitive, batch processing, background services). Define explicit policies for each identified domain.\n    *   **Risk:** Initial overhead from instrumentation, potential for misclassification requiring manual tuning, complexity in policy definition across diverse workloads.\n\n2.  **Adaptive Resource Orchestration:**\n    *   **Impact:** HIGH\n    *   **Recommendations:** Based on the newly defined domains, implement an adaptive resource manager that dynamically allocates CPU cores, memory pages, I/O bandwidth, and network priority. Utilize Codex's inherent capability for fine-grained resource control, employing techniques like intelligent process scheduling, memory ballooning, and I/O queuing. Establish resource pools and quotas for each domain to prevent \"noisy neighbor\" issues and ensure performance isolation.\n    *   **Risk:** Over-aggressive reallocation leading to thrashing, increased complexity in managing dynamic configurations, potential for live migration/re-scheduling overhead if not finely tuned.\n\n3.  **Real-time Performance Anomaly Detection:**\n    *   **Impact:** MEDIUM\n    *   **Recommendations:** Deploy comprehensive real-time telemetry across all identified and newly defined domains. Establish performance baselines for key metrics within each domain. Implement AI-driven anomaly detection to identify deviations from these baselines or sudden changes in workload characteristics that may indicate a new \"undefined\" sub-domain or performance degradation. Integrate automated alerting and remediation actions where feasible.\n    *   **Risk:** Alert fatigue from false positives, computational overhead of real-time analytics, difficulty in distinguishing genuine anomalies from expected workload fluctuations without robust baselining.",
+  "confidence": 0.6153846153846154
+}
+
+STEP 7: RL + SELF-AUDIT + METACOG CHECK
+----------------------------------------
+RL cycle:
+{
+  "ok": true,
+  "episode": {
+    "id": "63669169-fab7-451b-accf-6547fe451b81",
+    "sessionId": "sim-smartbottle-rl-1",
+    "totalReward": 0,
+    "episodeLength": 5,
+    "avgReward": 0,
+    "timestamp": "2025-11-23T05:15:51.940Z"
+  },
+  "bufferStats": {
+    "experienceCount": 16,
+    "episodeCount": 3,
+    "maxBufferSize": 1000,
+    "avgReward": 0
+  }
+}
+
+Self-Audit (risky reasoning sample):
+{
+  "ok": true,
+  "report": {
+    "ok": true,
+    "timestamp": "2025-11-23T05:15:51.955Z",
+    "findings": [],
+    "qualityScore": {
+      "overall": 100,
+      "clarity": 100,
+      "completeness": 100,
+      "correctness": 100,
+      "safety": 100,
+      "usefulness": 100
+    },
+    "overallConfidence": 0.95,
+    "suggestions": [],
+    "shouldBlock": false,
+    "summary": "Audit passed: No issues detected. Quality score: 100/100"
+  }
+}
+
+Meta-Cognition (overconfident claim sample):
+{
+  "ok": true,
+  "report": {
+    "findings": [
+      {
+        "type": "HALLUCINATION_RISK",
+        "severity": "HIGH",
+        "description": "Detected overly certain statements: always works"
+      }
+    ],
+    "confidence": 0.4,
+    "requiresApproval": true,
+    "improvedVersion": "This always works 100% of the time, no matter what. [Meta-Cognition: refined for clarity and consistency]",
+    "sourceModels": [
+      "uncertainty-engine",
+      "contradiction-engine",
+      "hallucination-engine",
+      "clarity-engine"
+    ]
+  }
+}
+
+=======================================
+  FULL SYSTEM SIMULATION TEST COMPLETE 
+=======================================
+Review outputs above for errors or red flags.
+

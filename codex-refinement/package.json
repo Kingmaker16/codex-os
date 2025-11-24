@@ -1,0 +1,26 @@
+{
+  "name": "codex-refinement",
+  "version": "1.0.0",
+  "description": "Refinement Layer v1 - Multi-LLM content improvement engine",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["codex", "refinement", "fusion", "llm"],
+  "author": "Codex OS",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/uuid": "^9.0.8",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  }
+}

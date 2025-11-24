@@ -1,0 +1,34 @@
+:root{
+  --bg: #f6f8fb;
+  --panel: #ffffff;
+  --user: #daf1ff;
+  --assistant: #f1f3f5;
+  --accent: #0b5fff;
+}
+html,body,#root{height:100%;}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg)}
+.codex-app{display:flex;height:100vh}
+.codex-main{flex:2;display:flex;flex-direction:column}
+.app{display:flex;flex-direction:column;height:100vh}
+.topbar{background:var(--panel);padding:10px;border-bottom:1px solid #e6e9ee}
+.controls{display:flex;gap:12px;align-items:center}
+.controls input, .controls select{padding:6px 8px}
+.chat{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:8px}
+.bubble{max-width:70%;padding:10px 12px;border-radius:12px}
+.bubble.user{align-self:flex-end;background:var(--user)}
+.bubble.assistant{align-self:flex-start;background:var(--assistant)}
+.composer{display:flex;padding:12px;gap:8px;background:var(--panel);border-top:1px solid #e6e9ee}
+.composer .input{flex:1;padding:8px;border:1px solid #d7dbe2;border-radius:6px}
+.composer button{background:var(--accent);color:white;border:none;padding:8px 14px;border-radius:6px}
+.codex-voice-btn{margin-left:0.5rem;padding:0.25rem 0.75rem;font-size:0.85rem;border-radius:4px;border:1px solid #ccc;background:#f5f5f5;cursor:pointer}
+.codex-voice-btn:disabled{opacity:0.5;cursor:not-allowed}
+.codex-voice-btn:hover:not(:disabled){background:#eaeaea}
+.error{background:#ffe7e7;color:#7a1b1b;padding:8px;margin:8px;border-radius:6px}
+.codex-thinking{margin:0.5rem 1rem;font-size:0.85rem;color:#888;font-style:italic}
+.codex-listening{color:#e00;font-weight:bold;margin:0.5rem 1rem;animation:pulse 1s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:0.3}100%{opacity:1}}
+.codex-memory{flex:1;border-left:1px solid #ddd;padding:0.75rem;font-size:0.85rem;background:#fafafa;overflow-y:auto}
+.codex-memory h2{font-size:0.9rem;margin-top:0}
+.codex-memory-error{color:#c00;margin-bottom:0.5rem}
+.codex-memory ul{padding-left:1.2rem;margin:0.5rem 0}
+.codex-memory li{margin-bottom:0.25rem}

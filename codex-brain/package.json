@@ -1,0 +1,22 @@
+{
+  "name": "codex-brain",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "node --watch --loader ts-node/esm src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "seed:identity": "node --loader ts-node/esm scripts/seedCodexIdentity.ts"
+  },
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "sqlite3": "^5.1.7",
+    "sqlite": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

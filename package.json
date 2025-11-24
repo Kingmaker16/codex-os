@@ -1,0 +1,16 @@
+{
+  "name": "codex-os",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Codex OS - Amar's Tactical AI Operating System",
+  "private": true,
+  "scripts": {
+    "codex:start": "npm --prefix codex-boot-manager start",
+    "codex:start:v1": "npm --prefix codex-boot-manager run start:v1",
+    "codex:stop": "npm --prefix codex-boot-manager stop",
+    "codex:backup": "node scripts/codexAutoBackup.js"
+  },
+  "keywords": ["codex", "ai", "operating-system"],
+  "author": "Amar",
+  "license": "MIT"
+}

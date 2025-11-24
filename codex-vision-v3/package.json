@@ -1,0 +1,21 @@
+{
+  "name": "codex-vision-v3",
+  "version": "3.0.0",
+  "description": "Codex Vision Engine v3 ULTRA — UI cognition and multi-step action reasoning.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "fastify": "^4.26.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/uuid": "^10.0.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "codex-strategy",
+  "version": "1.0.0",
+  "description": "Codex Strategic Intelligence Layer v1",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.4.0"
+  }
+}

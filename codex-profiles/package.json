@@ -1,0 +1,20 @@
+{
+  "name": "codex-profiles",
+  "version": "1.0.0",
+  "description": "Codex Social Profile Engine v1 (Account Creation Engine)",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/uuid": "^9.0.8",
+    "typescript": "^5.3.3"
+  }
+}

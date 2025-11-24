@@ -1,0 +1,24 @@
+{
+  "name": "codex-distribution-v2",
+  "version": "2.0.0",
+  "description": "Distribution Engine v2 ULTRA - Multi-LLM, trend-weighted, safety-first distribution orchestrator",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "node tests/testDistribution.mjs && node tests/testCalendar.mjs && node tests/testSafety.mjs"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "axios": "^1.7.9",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.5",
+    "@types/uuid": "^9.0.0",
+    "tsx": "^4.7.0"
+  }
+}

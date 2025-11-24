@@ -1,0 +1,25 @@
+{
+  "name": "codex-boot-manager",
+  "version": "1.0.0",
+  "description": "Codex OS Boot Manager - Unified startup orchestration",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js start:v2",
+    "start:v1": "node dist/index.js start:v1",
+    "start:v2": "node dist/index.js start:v2",
+    "stop": "node dist/index.js stop",
+    "dev": "ts-node --esm src/index.ts start:v2",
+    "dev:v1": "ts-node --esm src/index.ts start:v1"
+  },
+  "keywords": ["codex", "boot", "orchestration"],
+  "author": "Amar",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}

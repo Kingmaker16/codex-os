@@ -1,0 +1,21 @@
+{
+  "name": "codex-engagement",
+  "version": "1.0.0",
+  "description": "Codex Engagement Engine v1 — reply planning, comment strategy, engagement loops.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/uuid": "^10.0.0",
+    "typescript": "^5.3.3"
+  }
+}

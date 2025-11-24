@@ -1,0 +1,5 @@
+- Overview of ecomm automation architecture
+- Key components: Inventory management, Order processing, Customer service automation
+- Integration with payment gateways
+- Real-time analytics and reporting
+- Scalability and security considerations

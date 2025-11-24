@@ -1,0 +1,12 @@
+{
+  "name": "codex-supervisor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n BRAIN,BRIDGE,ORCH,DESKTOP -c blue,cyan,magenta,green \"npm --prefix ../codex-brain run dev\" \"npm --prefix ../codex-bridge run dev\" \"npm --prefix ../codex-orchestrator run start\" \"npm --prefix ../codex-desktop run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

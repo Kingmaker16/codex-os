@@ -1,0 +1,37 @@
+{
+  "name": "codex-ecommerce",
+  "version": "2.0.0",
+  "description": "E-Commerce Engine v2 - Full stack store builder, product research, fulfillment, and analytics",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo 'Tests TBD' && exit 0"
+  },
+  "keywords": [
+    "ecommerce",
+    "store-builder",
+    "nextjs",
+    "product-research",
+    "fulfillment",
+    "analytics"
+  ],
+  "author": "Codex OS",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "@fastify/cors": "^10.0.1",
+    "better-sqlite3": "^11.0.0",
+    "stripe": "^17.3.1",
+    "axios": "^1.7.9",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

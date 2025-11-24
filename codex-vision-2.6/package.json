@@ -1,0 +1,26 @@
+{
+  "name": "codex-vision-2.6",
+  "version": "2.6.0",
+  "description": "Vision Engine v2.6 ULTRA - AI Co-Pilot for Video Editing",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["vision", "video-editing", "ai-copilot", "multi-llm"],
+  "author": "Amar",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "node-fetch": "^3.3.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "@types/uuid": "^9.0.8",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  }
+}

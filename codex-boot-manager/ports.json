@@ -1,0 +1,16 @@
+{
+  "bridge": 4000,
+  "brain": 4100,
+  "orchestrator": 4200,
+  "hands": 4300,
+  "ui": 5173,
+  "voice": 9001,
+  "knowledge": 4500,
+  "vision": 4600,
+  "stability": 4700,
+  "social": 4800,
+  "video": 4700,
+  "mac-optimizer": 4900,
+  "telemetry": 4950,
+  "monetization": 4850
+}
