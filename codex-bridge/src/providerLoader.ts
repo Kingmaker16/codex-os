@@ -168,6 +168,37 @@ export async function loadProviders(dir?: string): Promise<Record<string, IModel
     }
   }
 
+  // If a Qwen API key is present, try to load Qwen provider next
+  const preferQwen = Boolean(process.env.QWEN_API_KEY);
+  if (preferQwen) {
+    const candidates = ["qwenProvider.ts", "qwenProvider.js"];
+    for (const c of candidates) {
+      const p = path.join(providersDir, c);
+      if (fs.existsSync(p)) {
+        try {
+          const mod = await import(pathToFileURL(p).href);
+          const exports = Object.values(mod);
+          for (const exp of exports) {
+            if (typeof exp !== "function") continue;
+            try {
+              const inst = new (exp as any)();
+              const ok = inst && typeof inst.name === "string" && Array.isArray(inst.models)
+                && typeof inst.respond === "function" && typeof inst.health === "function";
+              if (ok) {
+                if (!result[inst.name]) result[inst.name] = inst as IModelProvider;
+              }
+            } catch (e) {
+              continue;
+            }
+          }
+        } catch (err) {
+          console.warn(`failed to import preferred provider file ${c}:`, (err as Error).message);
+        }
+        break;
+      }
+    }
+  }
+
   const files = fs.readdirSync(providersDir).filter(f => f.endsWith(".ts") || f.endsWith(".js"));
 
   for (const file of files) {

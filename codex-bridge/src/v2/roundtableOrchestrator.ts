@@ -7,6 +7,7 @@
  * - Researcher (Gemini): Context analysis and research
  * - Coder (Claude): Implementation and code generation
  * - Critic (Grok): Review and risk assessment
+ * - Analyst (Qwen): Data analysis, multilingual reasoning, trend mapping
  * - Judge (Claude/GPT): Synthesis and final plan
  */
 
@@ -24,6 +25,7 @@ const DEFAULT_PARTICIPANTS = {
   researcher: { provider: "gemini", model: "gemini-pro" },
   coder: { provider: "anthropic", model: "claude-3-sonnet-20240229" },
   critic: { provider: "grok", model: "grok-beta" },
+  analyst: { provider: "qwen", model: "qwen-max" },
   judge: { provider: "anthropic", model: "claude-3-opus-20240229" }
 };
 
@@ -47,6 +49,7 @@ export class RoundtableOrchestrator {
       researcher: request.participants?.researcher || DEFAULT_PARTICIPANTS.researcher,
       coder: request.participants?.coder || DEFAULT_PARTICIPANTS.coder,
       critic: request.participants?.critic || DEFAULT_PARTICIPANTS.critic,
+      analyst: request.participants?.analyst || DEFAULT_PARTICIPANTS.analyst,
       judge: request.participants?.judge || DEFAULT_PARTICIPANTS.judge
     };
 
@@ -82,7 +85,15 @@ export class RoundtableOrchestrator {
     );
     participantResults.push(criticResult);
 
-    // Phase 5: Judge - Synthesize final plan
+    // Phase 5: Analyst - Data analysis and trend mapping
+    const analystResult = await this.runParticipant(
+      'analyst',
+      participants.analyst,
+      this.buildAnalystPrompt(request, plannerResult, researcherResult, coderResult, criticResult)
+    );
+    participantResults.push(analystResult);
+
+    // Phase 6: Judge - Synthesize final plan
     const judgeResult = await this.synthesizeFinalPlan(
       request,
       participants.judge,
@@ -107,7 +118,7 @@ export class RoundtableOrchestrator {
    * Run a single participant
    */
   private async runParticipant(
-    role: 'planner' | 'researcher' | 'coder' | 'critic',
+    role: 'planner' | 'researcher' | 'coder' | 'critic' | 'analyst',
     config: ParticipantConfig,
     messages: ModelRequest
   ): Promise<RoundtableParticipantResult> {
@@ -301,6 +312,53 @@ Provide a critical review identifying risks and improvements.`
   }
 
   /**
+   * Build analyst prompt
+   */
+  private buildAnalystPrompt(
+    request: RoundtableRequest,
+    plannerResult: RoundtableParticipantResult,
+    researcherResult: RoundtableParticipantResult,
+    coderResult: RoundtableParticipantResult,
+    criticResult: RoundtableParticipantResult
+  ): ModelRequest {
+    return {
+      model: 'qwen-max',
+      messages: [
+        {
+          role: 'system',
+          content: `You are the Data Analyst in a multi-LLM roundtable. Your role is to:
+1. Analyze data patterns and trends in the proposed solution
+2. Provide multilingual and cross-cultural insights if relevant
+3. Identify e-commerce or business intelligence opportunities
+4. Map global trends and market implications
+5. Quantify impact metrics and success criteria
+
+Output format: Analytical report with sections for Data Insights, Trends, Metrics, Opportunities.`
+        },
+        {
+          role: 'user',
+          content: `Goal: ${request.goal}
+Mode: ${request.mode}
+
+Planner's Strategy:
+${plannerResult.content}
+
+Researcher's Insights:
+${researcherResult.content}
+
+Coder's Implementation Plan:
+${coderResult.content}
+
+Critic's Review:
+${criticResult.content}
+
+Provide data-driven analysis, trend mapping, and quantifiable metrics for this initiative.`
+        }
+      ]
+    };
+  }
+
+  /**
    * Synthesize final plan from all participants
    */
   private async synthesizeFinalPlan(
@@ -318,6 +376,7 @@ Provide a critical review identifying risks and improvements.`
     const researcher = results.find(r => r.role === 'researcher');
     const coder = results.find(r => r.role === 'coder');
     const critic = results.find(r => r.role === 'critic');
+    const analyst = results.find(r => r.role === 'analyst');
 
     const provider = this.providers[judgeConfig.provider];
     if (!provider) {
@@ -338,6 +397,13 @@ Provide a critical review identifying risks and improvements.`
 2. Extract concrete tasks for implementation
 3. Identify risk flags that need attention
 4. Provide director-level notes
+
+You are receiving inputs from 5 specialized AI participants:
+- PLANNER: Strategic planning and decomposition
+- RESEARCHER: Context analysis and domain knowledge
+- CODER: Implementation strategy and technical design
+- CRITIC: Risk assessment and improvement suggestions
+- ANALYST: Data insights, trends, and quantifiable metrics
 
 Output your response as valid JSON with this structure:
 {
@@ -367,7 +433,10 @@ ${coder?.content || 'No input'}
 CRITIC (${critic?.provider}):
 ${critic?.content || 'No input'}
 
-Synthesize these inputs into a final plan with concrete tasks.`
+ANALYST (${analyst?.provider}):
+${analyst?.content || 'No input'}
+
+Synthesize these 5 perspectives into a final plan with concrete tasks.`
         }
       ]
     };

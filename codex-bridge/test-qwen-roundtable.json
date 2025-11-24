@@ -1,0 +1,17 @@
+{
+  "sessionId": "qwen-test-001",
+  "goal": "Analyze e-commerce trends for a global marketplace platform and recommend data-driven optimization strategies",
+  "mode": "plan",
+  "context": {
+    "repoSummary": "Multi-region e-commerce platform with microservices architecture. TypeScript/Node.js backend with React frontend. Supports 15 languages and 40 countries.",
+    "notes": "Focus on data analytics, multilingual support optimization, and global trend mapping. Qwen's expertise needed for cross-cultural insights and quantifiable metrics."
+  },
+  "participants": {
+    "planner": { "provider": "mock", "model": "mock" },
+    "researcher": { "provider": "mock", "model": "mock" },
+    "coder": { "provider": "mock", "model": "mock" },
+    "critic": { "provider": "mock", "model": "mock" },
+    "analyst": { "provider": "mock", "model": "mock" },
+    "judge": { "provider": "mock", "model": "mock" }
+  }
+}

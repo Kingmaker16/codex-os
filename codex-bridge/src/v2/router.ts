@@ -86,6 +86,7 @@ export function registerV2Routes(
         researcher: { provider: "gemini", model: "gemini-pro", available: available.includes("gemini") },
         coder: { provider: "anthropic", model: "claude-3-sonnet-20240229", available: available.includes("anthropic") },
         critic: { provider: "grok", model: "grok-beta", available: available.includes("grok") },
+        analyst: { provider: "qwen", model: "qwen-max", available: available.includes("qwen") },
         judge: { provider: "anthropic", model: "claude-3-opus-20240229", available: available.includes("anthropic") }
       },
       availableProviders: available,

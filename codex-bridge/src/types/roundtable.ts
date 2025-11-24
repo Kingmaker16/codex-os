@@ -6,6 +6,7 @@
  * - Gemini (Researcher): Context gathering and analysis
  * - Claude (Coder): Implementation and code generation
  * - Grok (Critic): Review, validation, and risk assessment
+ * - Qwen (Analyst): Data analysis, multilingual reasoning, e-commerce intelligence
  * - Judge: Synthesizes all inputs into final plan
  */
 
@@ -19,8 +20,8 @@ export interface RoundtableContext {
 }
 
 export interface RoundtableParticipantResult {
-  role: 'planner' | 'researcher' | 'coder' | 'critic';
-  provider: 'openai' | 'anthropic' | 'gemini' | 'grok' | string;
+  role: 'planner' | 'researcher' | 'coder' | 'critic' | 'analyst';
+  provider: 'openai' | 'anthropic' | 'gemini' | 'grok' | 'qwen' | string;
   model: string;
   content: string;
   raw?: any;
@@ -51,6 +52,7 @@ export interface RoundtableRequest {
     researcher?: ParticipantConfig;
     coder?: ParticipantConfig;
     critic?: ParticipantConfig;
+    analyst?: ParticipantConfig;
     judge?: ParticipantConfig;
   };
 }
