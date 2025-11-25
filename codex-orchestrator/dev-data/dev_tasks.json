@@ -1,0 +1,54 @@
+[
+  {
+    "id": "plan-1764077911928",
+    "goal": "Fix Telemetry, Visibility, and Engagement health endpoints, register them in Boot Manager v2, and update CODEX_OS_SUMMARY_FOR_AI.md to Online.",
+    "finalPlan": "# Comprehensive Health Endpoint Restoration and Registration Plan\n\n## Objective\nRestore telemetry, visibility, and engagement health endpoints, register in Boot Manager v2, and update system documentation.\n\n## Key Phases\n1. Diagnostic and Repair\n2. Boot Manager Integration\n3. Documentation Update",
+    "tasks": [
+      {
+        "id": "health-diagnostics-1",
+        "file": "/codex-os/health-endpoints/diagnostics.py",
+        "instructions": "Implement comprehensive EndpointDiagnostics class with diagnostic scanning for telemetry, visibility, and engagement endpoints",
+        "priority": "high"
+      },
+      {
+        "id": "registration-script-2",
+        "file": "/codex-os/scripts/endpoint-registration.sh",
+        "instructions": "Create bash script for idempotent endpoint registration in Boot Manager v2",
+        "priority": "high"
+      },
+      {
+        "id": "documentation-update-3",
+        "file": "/codex-os/docs/CODEX_OS_SUMMARY_FOR_AI.md",
+        "instructions": "Update documentation with online status, diagnostic results, and timestamp",
+        "priority": "medium"
+      }
+    ],
+    "createdAt": "2025-11-25T13:38:31.928Z",
+    "sessionId": "mission-1764077865908",
+    "judgeReasoning": "Synthesized plan combines strategic decomposition from PLANNER with detailed technical implementation from CODER. Focuses on systematic diagnostics, robust registration, and clear documentation. Addresses potential risks through comprehensive approach.",
+    "riskFlags": [
+      "Potential undetected service dependencies",
+      "Cross-functional communication delays",
+      "Integration complications with Boot Manager v2",
+      "Incomplete documentation of system changes"
+    ]
+  },
+  {
+    "id": "plan-1764078264374",
+    "goal": "Fix Telemetry, Visibility, and Engagement health endpoints, register in Boot Manager v2",
+    "finalPlan": "Judge provider not available",
+    "tasks": [],
+    "createdAt": "2025-11-25T13:44:24.374Z",
+    "sessionId": "mission-1764078226216",
+    "judgeReasoning": "Error: Judge provider not found"
+  },
+  {
+    "id": "plan-1764079946217",
+    "goal": "Add health check to codex-telemetry service",
+    "finalPlan": "Judge provider not available",
+    "tasks": [],
+    "createdAt": "2025-11-25T14:12:26.217Z",
+    "sessionId": "mission-1764079914348",
+    "judgeReasoning": "Error: Judge provider not found"
+  }
+]

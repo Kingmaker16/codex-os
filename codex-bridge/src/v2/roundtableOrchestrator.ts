@@ -23,9 +23,11 @@ import type {
 const DEFAULT_PARTICIPANTS = {
   planner: { provider: "openai", model: "gpt-4" },
   researcher: { provider: "gemini", model: "gemini-pro" },
-  coder: { provider: "anthropic", model: "claude-3-sonnet-20240229" },
+  coder: { provider: "claude", model: "claude-3-5-haiku-20241022" },
   critic: { provider: "grok", model: "grok-beta" },
   analyst: { provider: "qwen", model: "qwen-max" },
+  judge: { provider: "claude", model: "claude-3-5-haiku-20241022" }
+};
   judge: { provider: "anthropic", model: "claude-3-opus-20240229" }
 };
 
@@ -405,11 +407,31 @@ You are receiving inputs from 5 specialized AI participants:
 - CRITIC: Risk assessment and improvement suggestions
 - ANALYST: Data insights, trends, and quantifiable metrics
 
+CRITICAL: Codex OS is a TypeScript monorepo with services like:
+- codex-brain (4100): Event logging
+- codex-bridge (4000): Multi-LLM coordination
+- codex-orchestrator (4200): Workflow intelligence
+- codex-hands (4300): File operations
+- codex-telemetry, codex-visibility, codex-engagement: Monitoring services
+- codex-boot-manager: Service startup orchestration
+
+File paths MUST be relative to /Users/amar/Codex and follow this pattern:
+- codex-{service}/src/index.ts (main entry)
+- codex-{service}/src/{feature}.ts (feature files)
+- docs/CODEX_*.md (documentation)
+
+Example valid paths:
+- "codex-telemetry/src/health.ts"
+- "codex-boot-manager/src/services.v2.ts"
+- "docs/CODEX_OS_SUMMARY_FOR_AI.md"
+
+INVALID: /codex-os/..., /Users/..., ./scripts/...
+
 Output your response as valid JSON with this structure:
 {
   "finalPlan": "comprehensive plan as markdown",
   "tasks": [
-    {"id": "task-1", "file": "path/to/file.ts", "instructions": "what to do", "priority": "high"}
+    {"id": "task-1", "file": "codex-service/src/file.ts", "instructions": "what to do", "priority": "high"}
   ],
   "notes": "high-level notes for project director",
   "risks": ["risk 1", "risk 2"],
